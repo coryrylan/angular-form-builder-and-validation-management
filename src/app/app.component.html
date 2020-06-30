@@ -1,0 +1,21 @@
+<h1>Angular Form Builder and Validation Management</h1>
+
+<p>
+  <a href="https://coryrylan.com/blog/angular-form-builder-and-validation-management">Tutorial at coryrylan.com</a>
+</p>
+
+<form [formGroup]="userForm" (submit)="saveUser()">
+  <label for="name">Name</label>
+  <input formControlName="name" id="name" />
+  <control-messages [control]="userForm.get('name')"></control-messages>
+
+  <label for="email">Email</label>
+  <input formControlName="email" id="email" />
+  <control-messages [control]="userForm.get('email')"></control-messages>
+
+  <label for="profile">Profile Description</label>
+  <textarea formControlName="profile" id="profile"></textarea>
+  <control-messages [control]="userForm.get('profile')"></control-messages>
+
+  <button type="submit" [disabled]="!userForm.valid">Submit</button>
+</form>
