@@ -1,14 +1,16 @@
 import { Component, Input } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormControl } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 import { ValidationService } from './validation.service';
 
 @Component({
   selector: 'control-messages',
+  standalone: true,
+  imports: [CommonModule],
   template: `<div *ngIf="errorMessage !== null">{{errorMessage}}</div>`
 })
 export class ControlMessagesComponent {
-  @Input() control: FormControl;
-  constructor() { }
+  @Input() control!: FormControl;
 
   get errorMessage() {
     for (let propertyName in this.control.errors) {
